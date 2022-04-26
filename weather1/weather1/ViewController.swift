@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  weather1
+//  Weather
 //
 //  Created by Гость on 21.04.2022.
 //
@@ -8,51 +8,53 @@
 import UIKit
 import CoreLocation
 
-class ViewController: UIViewController{
+class ViewController: UIViewController {
     
     @IBOutlet weak var cityNameLabel: UILabel!
-   @IBOutlet weak var weatherDiscriptionLabel: UILabel!
+    @IBOutlet weak var weatherDescriptionLabel: UILabel!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var weatherIconImageView: UIImageView!
     
-    let locationManager = CLLocationManager()
+    
+    let locationManader = CLLocationManager()
     var weatherData = WeatherData()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-       startLocationManager()
+        // Do any additional setup after loading the view.
+        startLocationManeger()
     }
-    
-    func startLocationManager() {
-        locationManager.requestWhenInUseAuthorization()
+
+    func startLocationManeger() {
+        locationManader.requestWhenInUseAuthorization()
+        
         if CLLocationManager.locationServicesEnabled() {
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
-            locationManager.pausesLocationUpdatesAutomatically = false
-            locationManager.startUpdatingLocation()
+            locationManader.delegate = self
+            locationManader.desiredAccuracy = kCLLocationAccuracyHundredMeters
+            locationManader.pausesLocationUpdatesAutomatically = false
+            locationManader.startUpdatingLocation()
         }
     }
     
-    func updateView() {
+    func updateView(){
         cityNameLabel.text = weatherData.name
-        weatherDiscriptionLabel.text = DataSource.weatherIDs[weatherData.weather[0].id]
-       temperatureLabel.text = weatherData.main.temp.description + "*"
+        weatherDescriptionLabel.text = DataSource.weatherIDs[weatherData.weather[0].id]
+        temperatureLabel.text = weatherData.main.temp.description + "°"
         weatherIconImageView.image = UIImage(named: weatherData.weather[0].icon)
     }
     
-   func updateWeatherInfo(latitude: Double, longtitude: Double) {
+    func updateWeatherInfo(latitude: Double, longtitude: Double) {
         let session = URLSession.shared
-        let url = URL (string: "https://api.openweathermap.org/data/2.5/weather?lat=\(latitude.description)&lon=\(longtitude.description)&units=metric&lang=ru&appid=837f2fc955f67f6b7c245ec5ed3b7fb8")!
-        let task = session.dataTask(with: url) { data, response, error in
+        let url = URL(string: "http://api.openweathermap.org/data/2.5/weather?lat=\(latitude.description)&lon=\(longtitude.description)&units=metric&lang=ru&APPID=61ed55f06a0380fb57abfb8779e68651")!
+        let task = session.dataTask(with: url) { (data, response, error ) in
             guard error == nil else {
                 print("DataTask error: \(error!.localizedDescription)")
-            return
-        }
+                return
+            }
             do {
                 self.weatherData = try JSONDecoder().decode(WeatherData.self, from: data!)
                 DispatchQueue.main.async {
-                print(self.weatherData)
+                    self.updateView()
                 }
             } catch {
                 print(error.localizedDescription)
@@ -61,13 +63,12 @@ class ViewController: UIViewController{
         task.resume()
     }
 
-
 }
 
 extension ViewController: CLLocationManagerDelegate {
-    private func locationManger(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let lastLocation = locations.last {
-            //updateWeatherInfo(latitude: lastLocation.coordinate.latitude, longtitude: lastLocation.coordinate.longitude)
+            updateWeatherInfo(latitude: lastLocation.coordinate.latitude, longtitude: lastLocation.coordinate.longitude)
             print(lastLocation.coordinate.latitude, lastLocation.coordinate.longitude)
         }
     }

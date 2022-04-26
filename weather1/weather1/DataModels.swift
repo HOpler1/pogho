@@ -1,6 +1,6 @@
 //
 //  DataModels.swift
-//  weather1
+//  Weather
 //
 //  Created by Гость on 21.04.2022.
 //
@@ -14,14 +14,15 @@ struct Weather: Codable {
     var icon: String
 }
 
-struct Main: Codable {
+struct Main: Codable  {
     var temp: Double = 0.0
     var pressure: Int = 0
-    var humidity: Int = 0
+    var humidity: Int = 0 
+    
 }
 
-struct WeatherData: Codable {
+struct WeatherData: Codable  {
     var weather: [Weather] = []
-    var main: Main = Main()
+    var main: Main = Main ()
     var name: String = ""
 }

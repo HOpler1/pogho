@@ -1,6 +1,6 @@
 //
 //  SceneDelegate.swift
-//  weather1
+//  Weather
 //
 //  Created by Гость on 21.04.2022.
 //

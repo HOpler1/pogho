@@ -17,7 +17,7 @@
 		AC0366782810D34A008AB5DD /* weather1UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0366772810D34A008AB5DD /* weather1UITests.swift */; };
 		AC03667A2810D34A008AB5DD /* weather1UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0366792810D34A008AB5DD /* weather1UITestsLaunchTests.swift */; };
 		AC0366872810E06A008AB5DD /* DataModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0366862810E06A008AB5DD /* DataModels.swift */; };
-		AC0366892810EA13008AB5DD /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0366882810EA13008AB5DD /* DataSource.swift */; };
+		ACEEBD6A2817793600517A9F /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACEEBD692817793600517A9F /* DataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +52,7 @@
 		AC0366772810D34A008AB5DD /* weather1UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = weather1UITests.swift; sourceTree = "<group>"; };
 		AC0366792810D34A008AB5DD /* weather1UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = weather1UITestsLaunchTests.swift; sourceTree = "<group>"; };
 		AC0366862810E06A008AB5DD /* DataModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModels.swift; sourceTree = "<group>"; };
-		AC0366882810EA13008AB5DD /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataSource.swift; path = ../../Resources/DataSource.swift; sourceTree = "<group>"; };
+		ACEEBD692817793600517A9F /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,7 +107,7 @@
 				AC0366582810D349008AB5DD /* SceneDelegate.swift */,
 				AC03665A2810D349008AB5DD /* ViewController.swift */,
 				AC0366862810E06A008AB5DD /* DataModels.swift */,
-				AC0366882810EA13008AB5DD /* DataSource.swift */,
+				ACEEBD692817793600517A9F /* DataSource.swift */,
 				AC03665C2810D349008AB5DD /* Main.storyboard */,
 				AC03665F2810D34A008AB5DD /* Assets.xcassets */,
 				AC0366612810D34A008AB5DD /* LaunchScreen.storyboard */,
@@ -264,10 +264,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACEEBD6A2817793600517A9F /* DataSource.swift in Sources */,
 				AC03665B2810D349008AB5DD /* ViewController.swift in Sources */,
 				AC0366872810E06A008AB5DD /* DataModels.swift in Sources */,
 				AC0366572810D349008AB5DD /* AppDelegate.swift in Sources */,
-				AC0366892810EA13008AB5DD /* DataSource.swift in Sources */,
 				AC0366592810D349008AB5DD /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
